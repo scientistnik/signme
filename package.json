@@ -1,0 +1,17 @@
+{
+  "name": "singme",
+  "version": "0.0.1",
+  "main": "build/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "rm -rf build | true & tsc",
+    "dev": "nodemon --exec tsc --watch src/**"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "cross-fetch": "^3.0.5",
+    "form-urlencoded": "^4.1.4"
+  }
+}
