@@ -1,14 +1,14 @@
-# SIGNME
+# signme
 
-Library for work with sign.me service to sign files.
+Library for work with [sign.me](https://sign.me) service to sign files.
 
-# How to install
+## How to install
 
-## npm package
+### npm package
 
 For install npm-package use `npm i signme` or `yarn add signme`.
 
-## in browser
+### in browser
 
 Just download file (`singme.js` or `signme.min.js`) from [this page](https://github.com/scientistnik/signme/releases) and insert the tag in your html:
 
@@ -21,7 +21,7 @@ Just download file (`singme.js` or `signme.min.js`) from [this page](https://git
 </script>
 ```
 
-# How to use
+## How to use
 
 Sign files use browser:
 
@@ -74,7 +74,7 @@ const response = await signme.check(md5("Hello"));
 const downloadLink = response.signature_1.pkcs7;
 ```
 
-# Build from source
+## Build from source
 
 Download from github, install dependencies:
 
@@ -104,10 +104,10 @@ Run tests:
 $ yarn test
 ```
 
-# Contributing
+## Contributing
 
 Bug reports and pull requests are welcome on GitHub.
 
-# License
+## License
 
 The package is available as open source under the terms of the [MIT License](https://github.com/scientistnik/signme/blob/master/LICENSE).
