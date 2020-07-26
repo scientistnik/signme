@@ -2,7 +2,7 @@ src
 tests
 dist
 tsconfig.json
-jext.config.js
+jest.config.js
 .env
 .env-template
 .DS_Store
