@@ -1,0 +1,7 @@
+<span id="main"></span>
+<script src="../dist/signme.min.js"></script>
+<script type="module">
+  const SignMe = signme.default
+  
+  document.getElementById("main").textContent = `Module found? ${JSON.stringify(signme)} ${SignMe}`
+</script>

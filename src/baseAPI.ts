@@ -39,6 +39,15 @@ export interface SignConfig {
   passw: string;
 }
 
+export interface SignatureCheckConfig {
+  filet?: base64;
+  md5: string;
+}
+
+export interface SignatureCheckResponse {
+  count: number;
+}
+
 export default class BaseAPI {
   serverName: string;
 
@@ -46,14 +55,14 @@ export default class BaseAPI {
     this.serverName = serverName;
   }
 
-  signFile(config: SingleSignFileConfig) {
+  signFile(config: SingleSignFileConfig): Promise<string> {
     return fetch(`${this.serverName}/signapi/sjson`, {
       method: "POST",
       body: JSON.stringify(config),
     }).then((response) => response.text());
   }
 
-  signFiles(config: MultiSignFileConfig) {
+  signFiles(config: MultiSignFileConfig): Promise<string> {
     return fetch(`${this.serverName}/signapi/multijson`, {
       method: "POST",
       body: JSON.stringify(config),
@@ -68,10 +77,20 @@ export default class BaseAPI {
     }).then((response) => response.text());
   }
 
-  signatureCheck(md5: string) {
+  signatureCheck(
+    config: SignatureCheckConfig
+  ): Promise<SignatureCheckResponse | Error> {
     return fetch(`${this.serverName}/signaturecheck/json`, {
       method: "POST",
-      body: JSON.stringify({ md5 }),
-    }).then((res) => res.json());
+      body: JSON.stringify(config),
+    })
+      .then((res) => res.text())
+      .then((text) => {
+        try {
+          return JSON.parse(text);
+        } catch (err) {
+          throw new Error(text);
+        }
+      });
   }
 }

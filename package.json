@@ -2,13 +2,30 @@
   "name": "singme",
   "version": "0.0.1",
   "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scientistnik/signme.git"
+  },
+  "homepage": "https://github.com/scientistnik/signme#README.md",
   "license": "MIT",
   "scripts": {
     "build": "rm -rf build | true & tsc",
-    "dev": "nodemon --exec tsc --watch src/**"
+    "browserify": "browserify build/index.js --standalone signme -o dist/signme.js -d",
+    "postbrowserify": "minify dist/signme.js -o dist/signme.min.js",
+    "dev": "nodemon --exec tsc --watch src/**",
+    "test": "jest"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "@types/jest": "^26.0.7",
+    "babel-minify": "^0.5.1",
+    "browserify": "^16.5.1",
+    "dotenv": "^8.2.0",
+    "jest": "^26.1.0",
+    "md5": "^2.2.1",
+    "nodemon": "^2.0.4",
+    "ts-jest": "^26.1.3",
+    "typescript": "^3.9.7"
   },
   "dependencies": {
     "cross-fetch": "^3.0.5",

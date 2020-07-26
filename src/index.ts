@@ -7,6 +7,7 @@ interface SignMeConfig {
   password?: string;
 }
 
+export { BaseAPI };
 export default class SignMe {
   baseAPI: BaseAPI;
 
@@ -41,6 +42,6 @@ export default class SignMe {
   }
 
   check(md5: string) {
-    return this.baseAPI.signatureCheck(md5);
+    return this.baseAPI.signatureCheck({ md5 });
   }
 }
